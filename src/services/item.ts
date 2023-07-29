@@ -23,9 +23,7 @@ const updateCar = async (id: string, data: Car) => {
 
 const deleteCar = async (id: string) => {
   const responseDelete = await ItemModel.findOneAndRemove({ _id: id });
-  if (!responseDelete) {
-    throw new Error("NOT_FOUND");
-  } 
+  if (!responseDelete) throw new Error("NOT_FOUND"); 
   return responseDelete;
 };
 
