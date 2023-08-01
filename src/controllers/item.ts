@@ -7,7 +7,7 @@ const getItems = async (req:Request, res:Response) => {
     const response = await getCars();
     res.send(response);
   } catch (err) {
-    handlerHttp(res, 'ERROR_GET_ITEMS, err');
+    handlerHttp(res, 404, 'ITEMS_NOT_FOUND', err);
   }
 }
 
@@ -17,7 +17,7 @@ const getItem = async ({ params }:Request, res:Response) => {
     const response = await getCar(id);
     res.send(response);
   } catch (err) {    
-    handlerHttp(res, 'ERROR_GET_ITEM', err);
+    handlerHttp(res, 404, 'ITEM_NOT_FOUND', err);
   }
 }
 
@@ -27,7 +27,7 @@ const postItems = async ({ body }:Request, res:Response) => {
     const response = await insertCar(body);
     res.send(response);
   } catch (err) {
-    handlerHttp(res, 'ERROR_POST_ITEM', err);
+    handlerHttp(res, 422, 'ITEM_UNPROCESSABLE', err);
   }
 }
 
@@ -37,7 +37,7 @@ const updateItem = async ({ params, body }:Request, res:Response) => {
     const response = await updateCar(id, body);
     res.send(response);
   } catch (err) {
-    handlerHttp(res, 'ERROR_UPDATE_ITEM', err);
+    handlerHttp(res, 409, 'ITEM_CONFLICT', err);
   }
 }
 
@@ -48,7 +48,7 @@ const deleteItem = async ({ params }:Request, res:Response) => {
     const response = await deleteCar(id);
     res.send(response);
   } catch (err) {
-    handlerHttp(res, 'ERROR_DELETE_ITEM', err);
+    handlerHttp(res, 417, 'ITEM_UNPROCESSABLE', err);
   }
 }
 

@@ -1,13 +1,12 @@
 import { Response } from 'express';
 
-const handlerHttp = (res:Response, err: string, errRaw?: any) => {
-  console.log(errRaw);
+const handlerHttp = (res:Response, statusCode: number, err: string, errRaw?: any) => {
+  console.log('Error ' + statusCode + ': ' + err + ' - Description: ' + errRaw);
+  res.status(statusCode).send({ 
+    'Error': err,
+    'Description': errRaw});
+  console.log('WTF!');
   
-  res.status(500);
-  res.send({ 
-            "error type": err,
-            "error descrtiption": errRaw.toString()
-          });
 };
 
 export { handlerHttp };
