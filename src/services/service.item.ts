@@ -1,5 +1,5 @@
-import { Car } from '../interfaces/car';
-import ItemModel from '../models/item';
+import { Car } from '../interfaces/interface.car';
+import ItemModel from '../models/model.item';
 
 const getCars = async () => {
   const responseGetAll = await ItemModel.find({});

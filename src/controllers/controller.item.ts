@@ -1,6 +1,6 @@
 import { Request, Response } from 'express'
-import { handlerHttp } from '../utils/error.handler';
-import { insertCar, getCars, getCar, updateCar, deleteCar } from '../services/item';
+import { handlerHttp } from '../utils/util.handler';
+import { insertCar, getCars, getCar, updateCar, deleteCar } from '../services/service.item';
 
 const getItems = async (req:Request, res:Response) => {
   try {

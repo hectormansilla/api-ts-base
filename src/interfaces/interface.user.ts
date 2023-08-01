@@ -1,4 +1,4 @@
-import { Auth } from "./auth";
+import { Auth } from "./interface.auth";
 
 export interface User extends Auth {
   name: string;

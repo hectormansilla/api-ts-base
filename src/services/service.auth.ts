@@ -1,7 +1,7 @@
-import { Auth } from "../interfaces/auth";
-import { User } from "../interfaces/user";
-import UserModel from "../models/user";
-import { HandlerEncrypt, handlerVerify } from "../utils/bcrypt.handler";
+import { Auth } from "../interfaces/interface.auth";
+import { User } from "../interfaces/interface.user";
+import UserModel from "../models/model.user";
+import { HandlerEncrypt, handlerVerify } from "../utils/util.bcrypt";
 
 const registerNewUser = async ({ email, password, name }: User) => {
   try {

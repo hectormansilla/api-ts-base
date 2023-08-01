@@ -6,13 +6,13 @@ const router = Router();
 
 
 const cleanFileName = (fileName:string) => {
-  return fileName.split('.').shift();
+  return fileName.split('.')[1];
 }
 
 readdirSync(PATH_ROUTER).filter((fileName)=>{
   const cleanName = cleanFileName(fileName);
-  if (cleanName !== 'index'){
-    import(`./${cleanName}`).then((moduleRouter) => {
+  if (cleanName !== 'ts'){
+    import(`./route.${cleanName}`).then((moduleRouter) => {
       console.log(`Cargando la ruta... ${cleanName}`);
       
       router.use(`/${cleanName}`, moduleRouter.router);
