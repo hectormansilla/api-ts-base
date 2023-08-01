@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { loginUser, registerNewUser } from "../services/service.auth";
-import { handlerHttp } from "../utils/util.handler";
+import { handlerHttp } from "../utils/util.httpErrors";
 
 const registerAuth = async ({ body }:Request, res:Response) => {
   let statusCode = 500;

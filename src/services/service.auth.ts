@@ -2,6 +2,7 @@ import { Auth } from "../interfaces/interface.auth";
 import { User } from "../interfaces/interface.user";
 import UserModel from "../models/model.user";
 import { HandlerEncrypt, handlerVerify } from "../utils/util.bcrypt";
+import { generateToken } from "../utils/util.jwt";
 
 const registerNewUser = async ({ email, password, name }: User) => {
   try {
@@ -25,10 +26,15 @@ const loginUser = async ({ email, password }: Auth) => {
     if (!isUserExist) throw ('USER_NOT_FOUND');
     const passwordHash = isUserExist.password
     const isCheckPassword = await handlerVerify(password, passwordHash);
-    if (!isCheckPassword) {
+    if (!isCheckPassword) { 
       throw ('PASSWORD_INCORRECT');
     } else {
-      return isUserExist
+      const token = generateToken(isUserExist.email);
+      const userData = {
+        user: isUserExist,
+        token,
+      }
+      return userData
     }
   } catch (err) {
     throw (err);
