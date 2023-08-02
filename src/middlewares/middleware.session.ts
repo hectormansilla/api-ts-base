@@ -7,7 +7,7 @@ const checkJwt = async (req: Request, res: Response, next: NextFunction) => {
     const jwtHeader = req.headers.authorization || '';
     const jwt = jwtHeader.split(' ').pop()
     const isUserTokenOk = await verifyToken(`${jwt}`);
-    if (!isUserTokenOk) throw new Error
+    if (!isUserTokenOk) throw new Error ('INVALID_TOKEN');
     next();
   } catch (err) {
     handlerHttp(res, 400, 'TOKEN_FAILURE', err);
