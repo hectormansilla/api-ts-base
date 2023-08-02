@@ -4,15 +4,17 @@ import UserModel from "../models/model.user";
 import { HandlerEncrypt, handlerVerify } from "../utils/util.bcrypt";
 import { generateToken } from "../utils/util.jwt";
 
-const registerNewUser = async ({ email, password, name }: User) => {
+const registerNewUser = async ({ email, password, name, role, description }: User) => {
   try {
     const isUserExist = await UserModel.findOne({ email });
     if (isUserExist) throw new Error('USER_ALREADY_EXIST');
     const passHash = await HandlerEncrypt(password);
     const registerNewUser = await UserModel.create({ 
-      name, 
       email, 
-      password: passHash 
+      password: passHash,
+      name, 
+      role,
+      description,
     });
     return registerNewUser;
   } catch (err) {

@@ -17,10 +17,10 @@ const UserSchema = new Schema<User>(
       required: true,
     },
     role: {
-      type: String,
-      enum: ['admin', 'tl', 'pro'],
+      type: Number,
+      enum: [10, 23, 86],
       required: true,
-    },    
+    },
     description: {
       type: String,
       default: 'Usuario de la App',
